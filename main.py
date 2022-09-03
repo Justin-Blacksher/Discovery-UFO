@@ -1,4 +1,6 @@
 import config
+import classes
+from PIL import ImageTk
 from tkinter import *
 from tkinter import ttk
 from tkextrafont import Font
@@ -13,6 +15,7 @@ window_height = config.HEIGHT
 window_width = config.WIDTH
 window_title = config.WINDOW_TITLE
 #window_icon = config.ICON
+c_image = config.ALIEN
 
 # --------------------------------------------------
 
@@ -32,13 +35,17 @@ root.title(window_title)
 root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 root.configure(bg=config.HEADER)
 #root.iconbitmap(window_icon)
+canvas = Canvas(root, width=window_width, height=window_height)
+
 
 # --------------------------------------------------
 
 # ___________ [ Button Sets ] _____________
 
-login = Button(root, command=functions.openLogin, font=FONT, text=config.BUTTON_TEXT)
-
+login = Button(root, command=functions.openLogin, font=FONT, text=config.BUTTON_TEXT, bg=config.BACKGROUND, fg=config.BUTTON)
+currentInvestigation = classes.InvestigationFile()
+currentInvestigation.addLocation(40.345)
+newInvestigation = Button(root, command=currentInvestigation.openInvestigationWindow, font=FONT, text=config.START_INV, bg=config.BACKGROUND, fg=config.BUTTON)
 
 # _________________________________________
 
@@ -49,18 +56,25 @@ areaLabel = ttk.Label(root, text=config.AREA_LABEL, font=FONT, background=config
 teamName = ttk.Label(root, text=config.TEAM_NAME, font=FONT,background=config.BACKGROUND, foreground=config.TEXT)
 currDate = ttk.Label(root, text=config.CURRENT_DATE, font=FONT,background=config.BACKGROUND, foreground=config.TEXT)
 
+
+
 # --------------------------------------------------
 
 # ---------- [ TK Packs ] --------------------------
-
+newInvestigation.pack(fill=X)
+login.pack(fill=X)
 titleLabel.pack(fill=X)
 areaLabel.pack(fill=X)
 teamName.pack(fill=X)
 currDate.pack(fill=X)
-login.pack()
+canvas.pack()
+
+
+
 
 # --------------------------------------------------
-
+img = ImageTk.PhotoImage(file=c_image)
+canvas.create_image(350,350,image=img)
 
 
 

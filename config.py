@@ -5,6 +5,7 @@
 #
 from datetime import datetime
 
+
 # _____________ [ Default Team Information ] ____________
 
 myTeam = 'SLC001'
@@ -59,6 +60,21 @@ LOGIN_WIDTH = 400
 LOGIN_X = 100
 LOGIN_Y = 100
 
+
 # _______________________________________
 
+# _______ [ Create Investigation ] ______
 
+INVWINDOW = 'Open Investigation'
+INVHEIGHT = 600
+INVWIDTH = 800
+INVX = 100
+INVY = 100
+START_INV = 'Start Investigation'
+
+
+# _______________________________________
+
+# __________[ Main Window Stuff ] _______
+ALIEN = 'loginAlien.png'
+# _______________________________________

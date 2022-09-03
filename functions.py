@@ -4,8 +4,8 @@
 # - Discovery UFO
 # ___________________________________________________________________________________
 
-
-from tkinter import Entry, Label, Toplevel
+from PIL import ImageTk, Image
+from tkinter import BOTTOM, LEFT, Button, Entry, Label, Toplevel
 from classes import Authenticate
 import config
 
@@ -30,11 +30,13 @@ def openLogin():
     loginWindow.title = config.LOGIN_TITLE
     loginWindow.geometry(f"{config.LOGIN_HEIGHT}x{config.LOGIN_WIDTH}+{config.LOGIN_X}+{config.LOGIN_Y}")
     loginWindow.configure(background=config.BACKGROUND)
+    loginWindow.resizable(False,False)
     Label(loginWindow, text=config.USERNAME, font=config.FONT, background=config.BACKGROUND, foreground=config.TEXT).pack()
     userEntry = Entry(loginWindow, show=None).pack()
     Label(loginWindow, text=config.PASSWORD, font=config.FONT, background=config.BACKGROUND, foreground=config.TEXT).pack()
     passEntry = Entry(loginWindow, show='*').pack()
-
+    Button(loginWindow, command=submitCredentials, font=config.FONT, text="Submit").pack()
+    Button(loginWindow, command=submitCredentials, font=config.FONT, text="Cancel").pack()
     
 
 
