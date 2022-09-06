@@ -78,3 +78,23 @@ START_INV = 'Start Investigation'
 # __________[ Main Window Stuff ] _______
 ALIEN = 'loginAlien.png'
 # _______________________________________
+
+
+
+# __ SQL __
+createTeams = ('''CREATE TABLE IF NOT EXISTS Teams (ID integer primary key autoincrement,
+                                   TeamName text NOT NULL,
+                                   uuid_local char(50) NOT NULL,
+                                   uuid_global char(50) NOT NULL,
+                                   dateJoined datetime NOT NULL);''')
+
+createSightings = ('''CREATE TABLE IF NOT EXISTS Sightings (ID integer primary key autoincrement,
+                                              Team text NOT NULL,
+                                              LocalID char(50) NOT NULL,
+                                              GlobalID char(50) NOT NULL,
+                                              Latitude char(50) NOT NULL,
+                                              Longitude char(50) NOT NULL,
+                                              TimeSighted datetime NOT NULL,
+                                              DMS_lat char(50) NOT NULL,
+                                              DMS_long char(50) NOT NULL;''')
+
